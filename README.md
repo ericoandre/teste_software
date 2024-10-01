@@ -99,7 +99,97 @@ platformio init --board esp12e  # ou outra placa específica que você esteja ut
 
 Isso criará a estrutura básica do projeto, incluindo o arquivo de configuração `platformio.ini`.
 
+### 2. Estrutura de Testes no PlatformIO
+
+No PlatformIO, os testes de integração são escritos em uma pasta chamada `test/` dentro do seu projeto. Cada subpasta em `test/` representa um conjunto de testes. O código de teste pode ser implementado usando bibliotecas como **Unity**, que o PlatformIO oferece como padrão.
+
+A estrutura básica de um projeto de testes de integração seria algo como:
+
+```bash
+project/
+|-- src/
+|   |-- main.cpp       # Código principal do projeto
+|-- test/
+|   |-- test_integration/
+|       |-- test_integration.cpp  # Código de teste de integração
+|-- platformio.ini     # Arquivo de configuração do PlatformIO
+```
 
 
+### 3. Exemplo de Teste de Integração com Sensores (DHT11)
 
+Vamos criar um exemplo simples de teste de integração com o sensor **DHT11**, que mede temperatura e umidade.
 
+1. Adicione a biblioteca do DHT ao projeto:
+
+   ```
+   platformio lib install "DHT sensor library"
+   ```
+
+2. Crie um arquivo de teste em `test/test_integration/test_integration.cpp`:
+
+```
+#include <Arduino.h>
+#include <unity.h>
+#include <DHT.h>
+
+#define DHTPIN 2      // Pino do sensor DHT11
+#define DHTTYPE DHT11 // Tipo do sensor
+
+DHT dht(DHTPIN, DHTTYPE);
+
+// Teste para verificar se a leitura de temperatura é válida
+void test_temperature_reading() {
+    float temp = dht.readTemperature();
+    TEST_ASSERT(temp >= -40 && temp <= 125);  // Temperatura válida para o DHT11
+}
+
+// Teste para verificar se a leitura de umidade é válida
+void test_humidity_reading() {
+    float hum = dht.readHumidity();
+    TEST_ASSERT(hum >= 0 && hum <= 100);  // Umidade válida (0-100%)
+}
+
+void setup() {
+    // Inicializa o sensor
+    dht.begin();
+
+    // Inicia o Unity (framework de testes)
+    UNITY_BEGIN();
+
+    // Executa os testes
+    RUN_TEST(test_temperature_reading);
+    RUN_TEST(test_humidity_reading);
+
+    // Finaliza o Unity
+    UNITY_END();
+}
+
+void loop() {
+    // Não é necessário um loop para testes simples
+}
+```
+
+Esse exemplo simples faz a leitura de temperatura e umidade do sensor DHT11 e verifica se os valores estão dentro dos limites esperados.
+
+1. Configure o arquivo `platformio.ini` para incluir as bibliotecas necessárias e habilitar o suporte a testes:
+
+```.env
+[env:esp12e]
+platform = espressif8266
+board = esp12e
+framework = arduino
+lib_deps =
+    DHT sensor library
+test_build_project_src = true  # Inclui o código principal nos testes
+```
+
+### 4. Executando os Testes
+
+Para rodar os testes de integração, execute o seguinte comando no terminal:
+
+```bash
+platformio test
+```
+
+Isso compilará o projeto e enviará os testes para o dispositivo ESP8266 (ou qualquer microcontrolador especificado), e exibirá os resultados dos testes diretamente no terminal.

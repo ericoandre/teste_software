@@ -115,10 +115,9 @@ project/
 |-- platformio.ini     # Arquivo de configuração do PlatformIO
 ```
 
-
 ### 3. Exemplo de Teste de Integração com Sensores (DHT11)
 
-Vamos criar um exemplo simples de teste de integração com o sensor **DHT11**, que mede temperatura e umidade.
+Vamos criar um exemplo simples de teste de integração com o sensor **DHT11** & **LDR**, que mede temperatura e umidade.
 
 1. Adicione a biblioteca do DHT ao projeto:
 
@@ -135,7 +134,7 @@ Vamos criar um exemplo simples de teste de integração com o sensor **DHT11**, 
 
 #define DHTPIN 2      // Pino do sensor DHT11
 #define DHTTYPE DHT11 // Tipo do sensor
-#define LDRpin A0 //Atribui A0 a variável ldr
+#define LDRPIN A0 //Atribui A0 a variável ldr
 
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -153,7 +152,7 @@ void test_temperature_reading() {
 
 // Teste para verificar se a leitura de luminosidade é válida
 void test_luminosidade_reading() {
-lumiz = analogRead(LDRpin);
+lumiz = analogRead(LDRPIN);
     TEST_ASSERT(lumiz >= 300 && lumiz <= 500);  // luminosidade válida para o LDR
 }
 
@@ -178,7 +177,7 @@ void loop() {
 }
 ```
 
-Esse exemplo simples faz a leitura de temperatura e umidade do sensor DHT11 e verifica se os valores estão dentro dos limites esperados.
+Esse exemplo simples faz a leitura de luminosidade do sensor LDR e temperatura e umidade do sensor DHT11 e verifica se os valores estão dentro dos limites esperados.
 
 1. Configure o arquivo `platformio.ini` para incluir as bibliotecas necessárias e habilitar o suporte a testes:
 
@@ -201,38 +200,6 @@ platformio test
 ```
 
 Isso compilará o projeto e enviará os testes para o dispositivo ESP8266 (ou qualquer microcontrolador especificado), e exibirá os resultados dos testes diretamente no terminal.
-
-
-
-### 6. Automatizando Testes com Integração Contínua (CI)
-
-Uma boa prática é integrar seus testes com um pipeline de **Integração Contínua (CI)**, como o **GitHub Actions** ou **GitLab CI**. Isso permite que os testes sejam executados automaticamente sempre que houver uma alteração no código.
-
-Aqui está um exemplo de como configurar um pipeline CI simples no GitHub Actions para rodar seus testes com PlatformIO:
-
-```
-name: CI for ESP8266
-
-on: [push, pull_request]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2
-
-    - name: Set up PlatformIO
-      run: |
-        pip install platformio
-        platformio update
-
-    - name: Run tests
-      run: platformio test
-```
-
-Esse pipeline será acionado automaticamente em cada `push` ou `pull request` e executará seus testes de integração, fornecendo feedback imediato sobre a qualidade do código.
 
 ## Conclusão
 

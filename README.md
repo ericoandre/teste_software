@@ -39,9 +39,15 @@ Os testes funcionais têm como objetivo verificar se o software embarcado está 
 
 ### 2. **Testes de Integração**
 
-Os testes de integração asseguram que os diferentes componentes do sistema (hardware e software) funcionem juntos de maneira correta. É aqui que verificamos se a comunicação entre o software embarcado e outros sistemas, como interfaces de rede ou outros dispositivos, está ocorrendo sem falhas.
+Os **testes de integração** verificam a interação entre diferentes componentes do sistema para garantir que eles funcionem corretamente quando combinados. Ao contrário dos testes unitários, que focam em funções ou módulos isolados, os testes de integração avaliam o comportamento do sistema como um todo, incluindo o hardware e suas interfaces.
 
-Um exemplo comum é testar se o sistema embarcado pode se comunicar com sensores externos via protocolos como I2C, SPI, ou CAN, e processar corretamente os dados recebidos.
+No contexto de sistemas embarcados, isso pode significar testar:
+
+- Comunicação entre o microcontrolador e sensores (ex.: via **I2C**, **SPI** ou **UART**).
+- Envio de dados para servidores ou APIs na nuvem.
+- Integração de diferentes bibliotecas de software.
+- Funcionamento adequado de periféricos (displays, LEDs, motores, etc.).
+
 
 ### 3. **Testes de Performance**
 
@@ -76,6 +82,24 @@ Em sistemas embarcados, é comum que os dispositivos operem por longos períodos
 ### 8. **Testes de Usabilidade (se aplicável)**
 
 Para sistemas embarcados que possuem interface com o usuário, como dispositivos vestíveis ou painéis de controle, os testes de usabilidade são importantes para garantir que o sistema seja intuitivo e fácil de usar.
+
+## Configurando o Ambiente de Testes com PlatformIO
+
+O **PlatformIO** pode ser instalado como uma extensão no **Visual Studio Code** ou diretamente pela linha de comando. A instalação pode ser feita via **pip**:
+
+```bash
+pip install platformio
+```
+
+Após a instalação, crie um novo projeto utilizando o comando:
+
+```bash
+platformio init --board esp12e  # ou outra placa específica que você esteja utilizando
+```
+
+Isso criará a estrutura básica do projeto, incluindo o arquivo de configuração `platformio.ini`.
+
+
 
 
 

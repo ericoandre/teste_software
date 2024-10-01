@@ -2,9 +2,9 @@
 
 Sistemas embarcados são uma parte crucial do nosso mundo moderno, presente em dispositivos como automóveis, eletrodomésticos, dispositivos médicos, smartphones e sistemas de automação. Esses sistemas têm uma característica especial: o software precisa ser altamente confiável, eficiente e otimizado para funcionar em conjunto com hardware específico, muitas vezes com recursos limitados. O **teste de software embarcado** é essencial para garantir a qualidade, confiabilidade e segurança desses sistemas.
 
-
-
 ## Introdução
+
+No desenvolvimento de sistemas embarcados, como aqueles baseados em microcontroladores como o **ESP8266** ou **ESP32**, é crucial garantir que os diferentes componentes de hardware e software funcionem corretamente em conjunto. Para isso, os **testes de integração** desempenham um papel fundamental, verificando a interação entre os módulos de software e hardware. O **PlatformIO** é uma poderosa ferramenta de desenvolvimento integrada que facilita a automação e execução de testes para microcontroladores, fornecendo suporte para diferentes plataformas e frameworks.
 
 
 ## O que é Software Embarcado?

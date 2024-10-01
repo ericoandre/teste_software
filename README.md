@@ -115,7 +115,9 @@ project/
 |-- platformio.ini     # Arquivo de configuração do PlatformIO
 ```
 
-### 3. Exemplo de Teste de Integração com Sensores (DHT11)
+### 3. Exemplo de Teste de Integração com Sensores (DHT11 & LDR)
+
+![](img/Circuit-Connecton-653x420.jpg)
 
 Vamos criar um exemplo simples de teste de integração com o sensor **DHT11** & **LDR**, que mede temperatura e umidade.
 
@@ -132,7 +134,7 @@ Vamos criar um exemplo simples de teste de integração com o sensor **DHT11** &
 #include <unity.h>
 #include <DHT.h>
 
-#define DHTPIN 2      // Pino do sensor DHT11
+#define DHTPIN 3      // Pino do sensor DHT11
 #define DHTTYPE DHT11 // Tipo do sensor
 #define LDRPIN A0 //Atribui A0 a variável ldr
 

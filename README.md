@@ -130,6 +130,8 @@ Vamos criar um exemplo simples de teste de integração com o sensor **DHT11** &
 2. Crie um arquivo de teste em `test/test_integration/test_integration.cpp`:
 
 ```cpp
+#ifdef UNITY_TEST
+
 #include <Arduino.h>
 #include <unity.h>
 #include <DHT.h>
@@ -177,6 +179,8 @@ void setup() {
 void loop() {
     // Não é necessário um loop para testes simples
 }
+
+#endif
 ```
 
 Esse exemplo simples faz a leitura de luminosidade do sensor LDR e temperatura e umidade do sensor DHT11 e verifica se os valores estão dentro dos limites esperados.

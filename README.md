@@ -190,11 +190,13 @@ Esse exemplo simples faz a leitura de luminosidade do sensor LDR e temperatura e
 ```.env
 [env:esp12e]
 platform = espressif8266
-board = esp12e
+board = nodemcuv2
 framework = arduino
-lib_deps =
-    DHT sensor library
-test_build_project_src = true  # Inclui o código principal nos testes
+lib_deps = DHT sensor library
+board_build.mcu = esp8266
+test_build_src = true  # Inclui o código principal nos testes
+monitor_speed = 115200
+upload_port = /dev/ttyUSB0
 ```
 
 ### 4. Executando os Testes

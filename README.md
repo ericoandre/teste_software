@@ -218,4 +218,4 @@ Implementar testes de integração garante que o sistema funcione corretamente e
 
 
 ## Apresentação
-![](https://docs.google.com/presentation/d/1u67xNJGF7r4R6tMp2r5eKKtOG_8oahwVlN3QH1VkzrU/edit?usp=sharing)
+[Apresentação](https://docs.google.com/presentation/d/1u67xNJGF7r4R6tMp2r5eKKtOG_8oahwVlN3QH1VkzrU/edit?usp=sharing)

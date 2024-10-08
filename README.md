@@ -215,3 +215,7 @@ O **PlatformIO** facilita a configuração e execução de testes de integraçã
 
 Implementar testes de integração garante que o sistema funcione corretamente em diferentes cenários, incluindo o uso de periféricos, comunicação com sensores e conectividade com serviços em nuvem. Além disso, a integração desses testes em pipelines de **Integração Contínua (CI)** melhora significativamente a qualidade do código e a eficiência do processo de desenvolvimento.
 
+
+
+## Apresentação
+[](https://docs.google.com/presentation/d/1u67xNJGF7r4R6tMp2r5eKKtOG_8oahwVlN3QH1VkzrU/edit?usp=sharing)
